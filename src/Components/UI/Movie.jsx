@@ -9,7 +9,7 @@ const Movie = ({ image, text, id }) => {
         <img src={image} alt="" className="movie__img" />
         <h3 className="movie__info--title">{text}</h3>
         <Link to={`/movies/${id}`}>
-          <button className="movie__button">Find out More</button>
+          <button className="movie__button">Find out More </button>
         </Link>
       </figure>
     </div>
