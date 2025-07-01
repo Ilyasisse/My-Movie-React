@@ -1,5 +1,5 @@
 import React, { use, useEffect, useState } from "react";
-import "./CSS/MovieinfoPage.css";
+import "./CSS/MovieInfoPage.css";
 import { ImageOutlined } from "@mui/icons-material";
 import Movies from "../Components/UI/MoviesNew";
 import { useParams } from "react-router-dom";
