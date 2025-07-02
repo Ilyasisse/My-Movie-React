@@ -2,37 +2,66 @@ import React, { useEffect, useState } from "react";
 import Logo from "../assets/movielogo.png";
 import bg from "../assets/moviebackground.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faGear, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { useStateValue } from "./UI/StateProvider";
 import { actionTypes } from "./UI/Reducer";
+ 
 
 const Nav = () => {
-  const[{ searchTerm }, dispatch] = useStateValue()
-  const [search, setSearch] = useState(``);
+  const [{ searchTerm }, dispatch] = useStateValue()
+  const [Navsearch, setNavSearch] = useState(``);
+  const [Mainsearch, setMainSearch] = useState(``);
   const navigate = useNavigate();
+  const [showInput, setShowInput] = useState(false);
 
-  function onSearch(e) {
+  function onNavSearch(e) {
     e.preventDefault();
-    console.log(search);
+    
     dispatch({
       type: actionTypes.SET_SEARCH_TERM,
-      searchTerm: search,
+      searchTerm: Navsearch,
     });
-
-
 
     navigate("/movies");
   }
 
+
+
+  function onMainSearch(e) {
+    e.preventDefault();
+    
+    dispatch({
+      type: actionTypes.SET_SEARCH_TERM,
+      searchTerm: Mainsearch,
+    });
+
+    navigate("/movies");
+  }
+  
+  
   function handleKeyUp(event) {
     if (event.key === "Enter") {
-      onSearch(event);
+      onNavSearch(event);
     }
   }
 
+  function handleMainKeyUp(event) {
+    if (event.key === "Enter") {
+      onMainSearch(event);
+    }
+  }
+  
   function handleIconClick() {
-    onSearch({ preventDefault: () => {} });
+  Navsearch({ preventDefault: () => { } });
+  }
+
+  function handleMainIconClick() {
+  onMainSearch({ preventDefault: () => {} }); // search from main section
+}
+
+  function handleIconClick() {
+    setShowInput(prev => !prev);
   }
 
   return (
@@ -56,23 +85,25 @@ const Nav = () => {
                 <div className="nav__input--wrapper">
                   <input
                     type="text"
-                    className="nav__input"
+                    className={`nav__input ${showInput ? "nav__input--active" : ""}`}
                     placeholder="Find a movie"
-                    value={search}
-                    onChange={(event) => setSearch(event.target.value)}
+                    value={Navsearch}
+                    onChange={(event) => setNavSearch(event.target.value)}
                     onKeyUp={handleKeyUp}
                   />
                   <FontAwesomeIcon
                     icon={faMagnifyingGlass}
                     className="fa-solid fa-magnifying-glass nav__search"
-                    onClick={handleIconClick}
                     aria-hidden="true"
+                    onClick={handleIconClick}
                   />
                 </div>
-                <i
+                <FontAwesomeIcon icon={faGear}
                   className="fa-solid fa-gear nav__settings"
                   aria-hidden="true"
-                ></i>
+
+                />
+
               </div>
             </div>
             <img src={bg} alt="" className="movie__background--img" />
@@ -92,9 +123,9 @@ const Nav = () => {
                     type="text"
                     className="movie__input"
                     placeholder="Find a movie"
-                    value={search}
-                    onChange={(event) => setSearch(event.target.value)}
-                    onKeyUp={handleKeyUp}
+                    value={Mainsearch}
+                    onChange={(event) => setMainSearch(event.target.value)}
+                    onKeyUp={handleMainKeyUp}
                   />
                   <FontAwesomeIcon
                     icon={faMagnifyingGlass}

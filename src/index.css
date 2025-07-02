@@ -26,7 +26,7 @@ a {
 /* NAVIGATION */
 
 .nav__content {
-  position: fixed;
+  position: absolute;
   top: 2px;
   left: 50%;
   transform: translateX(-50%);
@@ -40,6 +40,7 @@ a {
   padding: 0 80px;
   filter: grayscale(0.5);
   z-index: 1;
+  margin-top: 16px;
 }
 
 .nav__left,
@@ -66,7 +67,9 @@ a {
   font-weight: 500;
   padding-bottom: 4px;
   border-bottom: 1px transparent solid;
-  transition: color 400ms ease, border-bottom-color 400ms ease;
+  transition:
+    color 400ms ease,
+    border-bottom-color 400ms ease;
 }
 
 .nav__link:hover {
@@ -96,8 +99,8 @@ a {
   position: absolute;
   width: 32px;
   height: 32px;
-  right: 16px;
-  top: 10px;
+  right: 30px;
+  top: 8px;
   cursor: pointer;
   /* z-index: 20; */
 }
@@ -111,6 +114,14 @@ a {
 .nav__input:active {
   width: 240px;
   outline: 2px #fff solid;
+  cursor: text;
+}
+
+.nav__input--active{
+  width: 240px;
+  border: 2px solid #fff;
+  opacity: 1;
+  pointer-events: all;
   cursor: text;
 }
 
@@ -243,7 +254,9 @@ a {
   padding: 5px 0;
   margin-left: 8px;
   font-weight: 300;
-  text-shadow: 1px 1px 10px crimson, 1px 1px 10px crimson;
+  text-shadow:
+    1px 1px 10px crimson,
+    1px 1px 10px crimson;
   color: crimson;
   border-bottom: 1.5px crimson solid;
   font-size: 24px;
@@ -270,15 +283,17 @@ a {
 }
 .movie__img--wrapper:hover .movie__button {
   opacity: 75%;
-  transition: opacity 800ms ease, transform 300ms ease;
+  transition:
+    opacity 800ms ease,
+    transform 300ms ease;
 }
 
 .movie__search--result-visible .movie__search--result {
   display: block;
 }
 
-.moviepage__Home{
-   background-color: #e50914; 
+.moviepage__Home {
+  background-color: #e50914;
   color: white;
   padding: 8px 16px;
   border: none;
