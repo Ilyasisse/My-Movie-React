@@ -57,6 +57,11 @@ const MovieInfoPage = () => {
                    Watch
                 </button>
               </div>
+              <div className="moviepage__search--button">
+                <Link to={"/"}>
+                  <button type="submit" className="moviepage__Home">Back to Home</button>
+                </Link>
+              </div>
             </div>
           ) : (
             <div className="movieinfo">

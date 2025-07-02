@@ -17,14 +17,14 @@ const MoviePage = () => {
   const [{ searchTerm }, dispatch] = useStateValue();
 
   useEffect(() => {
-    searchTerm && searchMovies();
-  }, [searchTerm]);
+  if (searchTerm) searchMovies(searchTerm);
+}, [searchTerm]);
 
-  async function searchMovies() {
+  async function searchMovies(query) {
     setLoading(true);
     setSearchMade(true);
     const response = await axios.get(
-      `https://omdbapi.com/?type=movie&apikey=28c39af6&s=${searchTerm}`
+      `https://omdbapi.com/?type=movie&apikey=28c39af6&s=${query}`
     );
     const movies = response.data.Search ? response.data.Search.slice(0, 6) : [];
     setMovies(movies);
@@ -34,6 +34,11 @@ const MoviePage = () => {
     e.preventDefault();
     setLoading(true);
     setSearchMade(true);
+    dispatch({
+      type: "SET_SEARCH_TERM",
+      searchTerm: search,
+    });
+    await searchMovies(search);
   }
 
   return (
@@ -53,7 +58,7 @@ const MoviePage = () => {
           </div>
           <div className="moviepage__search--button">
             <Link to={"/"}>
-            <button type="submit" className="moviepage__Home">Back to Home</button>
+              <button type="button" className="moviepage__Home">Back to Home</button>
             </Link>
           </div>
         </form>
@@ -64,7 +69,7 @@ const MoviePage = () => {
           </figure>
         )}
         {loading === true && searchMade === true && (
-          <LoopRoundedIcon  className="moviepage__loading" />
+          <LoopRoundedIcon className="moviepage__loading" />
         )}
         {loading === false && searchMade === true && (
           <section id="movies">

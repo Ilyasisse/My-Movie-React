@@ -70,6 +70,7 @@ a {
   transition:
     color 400ms ease,
     border-bottom-color 400ms ease;
+    cursor: not-allowed;
 }
 
 .nav__link:hover {
@@ -100,7 +101,7 @@ a {
   width: 32px;
   height: 32px;
   right: 30px;
-  top: 8px;
+  top: 5px;
   cursor: pointer;
   /* z-index: 20; */
 }
@@ -127,6 +128,7 @@ a {
 
 .nav__settings {
   cursor: not-allowed;
+  font-size: 32px;
 }
 
 /* MOVIE BACKGROUND */

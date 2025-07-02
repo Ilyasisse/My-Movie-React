@@ -52,6 +52,28 @@
   cursor: pointer;
 }
 
+.moviepage__Home {
+  background-color: #e50914;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.moviepage__Home:hover {
+  background-color: #f6121d;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.moviepage__Home:active {
+  transform: scale(0.98);
+}
+
 button > .MuiSvgIcon-root {
   font-size: 40px !important;
   color: #fff;
