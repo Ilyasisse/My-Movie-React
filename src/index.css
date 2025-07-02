@@ -395,7 +395,6 @@ a {
 .movie__img {
   width: 100%;
   max-height: 288px;
-  height: 288px;
   transition: all 400ms ease;
   z-index: -2;
 }
